@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import ContactForm from './components/ContactForm'
 import ContactList from './components/ContactList'
 import Filter from './components/Filter'
+import s from './App.module.css'
+
 
 class App extends Component {
   state = {
@@ -74,10 +76,10 @@ class App extends Component {
     const normalizedFilter = filter.toLowerCase()
     const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter))
     return (
-      <div>
+      <div className={s.container}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact}/>
-        <h2>Contacts</h2>
+        <h2 className={s.contacts}>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter}/>
         <ContactList contacts={filteredContacts} onDelete={this.deleteContact}/>
         </div>
